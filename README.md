@@ -1,8 +1,9 @@
+# 🏡 The Real Estate Crystal Ball: Predicting Prices with Smarter Data  
+
 ![Image](https://github.com/user-attachments/assets/1a2a7b22-77bd-44bf-8567-aa1d5722cd7c)
-# 🏡 The Real Estate Crystal Ball: Predicting Prices with Smarter Data
 
 ### **TL;DR**  
-Grouped property features based on real estate logic, tested multiple models, and found that **feature engineering significantly improved linear regression** but had **limited impact on advanced models like CatBoost**, which ultimately performed best.  
+Grouped property features based on real estate logic, tested multiple models, and found that **feature engineering improved performance across models**, with **the largest gains in linear regression and gradient boosting**, while **CatBoost ultimately performed best**.  
 
 ---
 
@@ -10,12 +11,13 @@ Grouped property features based on real estate logic, tested multiple models, an
 Michael Lewis writes to **one specific person**—someone real, someone who will challenge him.  
 **RP, this project is for you.**  
 
-Most property valuation models focus on **individual features** with high correlation, but real estate professionals think about **feature interactions**—location, condition, and land use **together**.  This project tested whether **machine learning models could think more like an appraiser.**  
+Most property valuation models focus on **individual features** with high correlation, but real estate professionals think about **feature interactions**—location, condition, and land use **together**.  
+This project tested whether **machine learning models could think more like an appraiser.**  
 
 ### **Key Takeaways:**  
 - ✅ **Feature engineering improved traditional models** (Linear Regression RMSE ↓ **24,471 → 21,975**).  
-- ✅ **Advanced models (Gradient Boosting, CatBoost) saw minimal gains**—they already capture relationships effectively.  
-- ✅ **CatBoost performed best overall** (**RMSE 19,875**).  
+- ✅ **Gradient Boosting and XGBoost also improved** (Gradient Boosting RMSE ↓ **22,612 → 21,077**).  
+- ✅ **CatBoost performed best overall** (**RMSE 19,875**), showing minimal reliance on manual feature engineering.  
 
 While this study focused on residential data, the approach applies to commercial real estate.  
 
@@ -32,17 +34,17 @@ Instead of just using high-correlation variables, features were **grouped logica
 - **Basement & Storage:** Finished space, bathrooms  
 - **Sales & Transactions:** Sale type, year  
 
-This structure helped traditional models **see relationships more clearly**—like combining all porch-related features into a single "outdoor space" metric.  
+This structure improved the EDA process and enhanced human interpretability—for example, combining all porch and basement related square footage. 
 
 ---
 
 ## **📌 Why Invest in EDA?**  
 
-I chose this project as an opportunity to put **domain knowledge to work**. While feature engineering did not always improve performance, I learned in a previous project that **time spent on EDA—truly understanding the variables and their context to the desired outcome—is an investment that pays off significantly in the long run**.  
+I chose this project as an opportunity to put **domain knowledge to work**. While feature engineering did not always produce dramatic gains, I learned in a previous project that **time spent on EDA—truly understanding the variables and their context to the desired outcome—is an investment that pays off significantly in the long run**.  
 
 Many data science workflows **move through EDA quickly**, focusing on cleaning and preprocessing before diving into modeling. However, a deeper exploration of the dataset not only helps with **feature selection and engineering** but also improves **interpretability, error analysis, and long-term model stability**.  
 
-Even though this approach didn’t drastically shift model performance, it strengthened my ability to **spot meaningful relationships between property features** and recognize **which insights were useful versus which were noise**.  
+The improvements seen in **linear regression and gradient boosting** suggest that structured feature engineering can enhance performance, especially for models that do not inherently detect complex interactions.  
 
 ---
 
@@ -50,7 +52,7 @@ Even though this approach didn’t drastically shift model performance, it stren
 
 EDA is not just about cleaning data—it’s about understanding how features interact with the target variable. To explore these relationships, I included key visualizations:  
 
-- **Sale Price Distribution** – Reveals the skewness of the target variable, highlighting the need for potential transformations.  
+- **Sale Price Distribution** – Reveals the skewness of the target variable, highlighting the need for transformation.  
 - **Sale Price vs. Total Rooms** – Examines whether more rooms consistently lead to higher prices or if other factors play a role.  
 - **Sale Price vs. GrLivArea (Above-Ground Living Area)** – A crucial check, as square footage is often one of the strongest predictors of home value.  
 - **Sale Price by Decade** – Investigates whether older homes follow different pricing trends, capturing potential temporal effects.  
@@ -72,17 +74,19 @@ These charts help **validate assumptions**, **identify outliers**, and **inform 
 
 ## **📊 Model Performance**  
 
-- **Feature engineering improved linear regression the most.**  
-- **Tree-based models saw marginal improvements.**  
-- **CatBoost outperformed all others.**  
+Feature engineering **consistently improved RMSE across models**, with the strongest gains in **linear regression and gradient boosting models**.  
 
 | Model | RMSE Before | RMSE After  |
 |---------------|------------|------------|
-| **Linear Regression** | 24,471 | 21,975 |
 | **Decision Tree**  | 37,033 | 36,282 |
-| **Gradient Boosting** | 21,995 | 20,250 |
+| **Linear Regression** | 24,471 | 21,975 |
+| **Gradient Boosting** | 22,612 | 21,077 |
+| **XG Boost** | 21,995 | 20,250 |
 | **CatBoost**   | 22,427 | **19,875** |
 
+- **Linear regression saw significant improvements**, confirming that structured feature engineering is especially beneficial for traditional models.  
+- **Gradient Boosting also improved**, showing that engineered features added some predictive power.  
+- **Tree-based models, including CatBoost, saw minimal gains**, reinforcing their ability to extract feature relationships without extensive manual engineering.  
 
 <table>
   <tr>
@@ -93,16 +97,18 @@ These charts help **validate assumptions**, **identify outliers**, and **inform 
 ---
 
 ## **🔎 Findings**  
-1️⃣ **Feature engineering helps simpler models but adds little value to Gradient Boosting models.**  
+1️⃣ **While feature engineering added value across models, its impact varied depending on how much the model relies on manual feature construction versus automated pattern recognition.**  
 
-2️⃣ **Grouping Related Features Improved Interpretability but Had Mixed Impact on Performance**  
-
-3️⃣ **Future work:** Model stacking, hierarchical models, and better neighborhood-based composite features.  
+2️⃣ **Grouping related features based on meaning and context improved interpretability and will be a new best practice in my toolkit.**  
+3️⃣ **Future work:** Model stacking, neighborhood and location based features, and exploring temporal trends.  
 
 ### **🏆 Kaggle Score: 0.12897** (Top 20%)  
-CatBoost delivered the strongest performance, underscoring the power of boosting algorithms in real estate valuation. The **Kaggle score of 0.12897 (Top 20%)** is excellent, especially considering that **minimizing RMSE was not the primary goal**. This project focused on comparing feature engineering methodologies rather than hyperparameter tuning, reinforcing that advanced models like CatBoost inherently capture complex relationships with minimal manual intervention.
+CatBoost delivered the strongest performance, underscoring the power of boosting algorithms in real estate valuation. The **Kaggle score of 0.12897 (Top 20%)** is excellent, especially considering that **minimizing RMSE was not the primary goal**.  
+
+This project focused on comparing **feature engineering methodologies rather than hyperparameter tuning**, reinforcing that advanced models like CatBoost inherently capture complex relationships with minimal manual intervention.
 
 ---
 
 ## **🏁 Conclusion**  
-**Domain-driven feature engineering significantly benefits traditional models, but advanced tree-based models already capture these relationships.**  
+Domain-driven feature engineering is a valuable tool across all models, though its impact varies. 
+
