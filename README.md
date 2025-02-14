@@ -72,6 +72,8 @@ EDA is not just about cleaning data—it’s about understanding how features in
 
 ## **📊 Model Performance**  
 
+For an explanation of RMSE and R2 (R-Squared), [READ THIS.](https://github.com/autumnmarin/ML_Decoded/blob/main/README.md)
+
 Feature engineering **consistently improved RMSE across models**, with the strongest gains in **linear regression and gradient boosting models**.  
 
 | Model | RMSE Before | RMSE After  |
