@@ -8,7 +8,8 @@ Grouped property features based on real estate logic, tested multiple models, an
 ---
 
 ## **📌 The Non-Technical Summary**  
-Michael Lewis writes to **one specific person**—someone real.
+Michael Lewis doesn't write for the masses—his words are written to one extraordinary, real individual.
+
 **RP, this project is for you.**  
 
 Most property valuation models focus on **individual features** with high correlation, but real estate professionals think about **feature interactions**—location, condition, and land use **together**.  
