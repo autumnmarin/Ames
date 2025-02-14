@@ -109,3 +109,7 @@ This project focused on comparing **feature engineering methodologies rather tha
 ## **🏁 Conclusion**  
 Domain-driven feature engineering is a valuable tool across all models, though its impact varies. 
 
+![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=autumnmarin.Ames)
+
+
+
