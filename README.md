@@ -8,18 +8,18 @@ Grouped property features based on real estate logic, tested multiple models, an
 ---
 
 ## **📌 The Non-Technical Summary**  
-Michael Lewis writes to **one specific person**—someone real, someone who will challenge him.  
+Michael Lewis doesn't write for the masses—his words are written to one extraordinary, real individual.
+
 **RP, this project is for you.**  
 
 Most property valuation models focus on **individual features** with high correlation, but real estate professionals think about **feature interactions**—location, condition, and land use **together**.  
-This project tested whether **machine learning models could think more like an appraiser.**  
+
+While this study focused on residential data, the approach applies to commercial real estate.  
 
 ### **Key Takeaways:**  
 - ✅ **Feature engineering improved traditional models** (Linear Regression RMSE ↓ **24,471 → 21,975**).  
 - ✅ **Gradient Boosting and XGBoost also improved** (Gradient Boosting RMSE ↓ **22,612 → 21,077**).  
 - ✅ **CatBoost performed best overall** (**RMSE 19,875**), showing minimal reliance on manual feature engineering.  
-
-While this study focused on residential data, the approach applies to commercial real estate.  
 
 Oh, and one more thing: **this is real-world, ugly data.** It’s full of missing values, inconsistencies, and weird edge cases—just like any dataset you’d find in commercial real estate. Cleaning it up and making it usable was half the battle.  
 
@@ -40,7 +40,7 @@ This structure improved the EDA process and enhanced human interpretability—fo
 
 ## **📌 Why Invest in EDA?**  
 
-I chose this project as an opportunity to put **domain knowledge to work**. While feature engineering did not always produce dramatic gains, I learned in a previous project that **time spent on EDA—truly understanding the variables and their context to the desired outcome—is an investment that pays off significantly in the long run**.  
+I chose this project as an opportunity to put **domain knowledge to work**. I learned in a previous project that **time spent on EDA—truly understanding the variables and their context to the desired outcome—is an investment that pays off significantly in the long run**.  
 
 Many data science workflows **move through EDA quickly**, focusing on cleaning and preprocessing before diving into modeling. However, a deeper exploration of the dataset not only helps with **feature selection and engineering** but also improves **interpretability, error analysis, and long-term model stability**.  
 
@@ -68,11 +68,11 @@ EDA is not just about cleaning data—it’s about understanding how features in
   </tr>
 </table>
 
-These charts help **validate assumptions**, **identify outliers**, and **inform feature engineering decisions**, ensuring that the model is built on meaningful, structured insights rather than just raw correlations.  
-
 ---
 
 ## **📊 Model Performance**  
+
+For an explanation of RMSE and R2 (R-Squared), [READ THIS.](https://github.com/autumnmarin/ML_Decoded/blob/main/README.md)
 
 Feature engineering **consistently improved RMSE across models**, with the strongest gains in **linear regression and gradient boosting models**.  
 
@@ -98,7 +98,6 @@ Feature engineering **consistently improved RMSE across models**, with the stron
 
 ## **🔎 Findings**  
 1️⃣ **While feature engineering added value across models, its impact varied depending on how much the model relies on manual feature construction versus automated pattern recognition.**  
-
 2️⃣ **Grouping related features based on meaning and context improved interpretability and will be a new best practice in my toolkit.**  
 3️⃣ **Future work:** Model stacking, neighborhood and location based features, and exploring temporal trends.  
 
@@ -111,4 +110,10 @@ This project focused on comparing **feature engineering methodologies rather tha
 
 ## **🏁 Conclusion**  
 Domain-driven feature engineering is a valuable tool across all models, though its impact varies. 
+
+![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=autumnmarin.Ames)
+
+
+
+
 
