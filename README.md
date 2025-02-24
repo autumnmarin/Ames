@@ -7,57 +7,91 @@ Grouped property features based on real estate logic, tested multiple models, an
 
 ---
 
-## **📌 The Non-Technical Summary**  
 Michael Lewis doesn't write for the masses—his words are written to one extraordinary, real individual.
+RP, this project is for you.
 
-**RP, this project is for you.**  
+---
 
-Most property valuation models focus on **individual features** with high correlation, but real estate professionals think about **feature interactions**—location, condition, and land use **together**.  
-
-While this study focused on residential data, the approach applies to commercial real estate.  
+## **📌 Project Overview**  
+This project applies advanced **feature engineering and machine learning** techniques to predict home prices in Ames, Iowa. By leveraging **domain knowledge**, we structured features into meaningful categories and tested multiple models to assess performance improvements.  
 
 ### **Key Takeaways:**  
-- ✅ **Feature engineering improved traditional models** (Linear Regression RMSE ↓ **24,471 → 21,975**).  
-- ✅ **Gradient Boosting and XGBoost also improved** (Gradient Boosting RMSE ↓ **22,612 → 21,077**).  
-- ✅ **CatBoost performed best overall** (**RMSE 19,875**), showing minimal reliance on manual feature engineering.  
-
-Oh, and one more thing: **this is real-world, ugly data.** It’s full of missing values, inconsistencies, and weird edge cases—just like any dataset you’d find in commercial real estate. Cleaning it up and making it usable was half the battle.  
+- **Feature engineering significantly improved model performance.**  
+- **The largest gains were observed in linear regression and gradient boosting models.**  
+- **CatBoost ultimately performed best, demonstrating minimal reliance on manual feature engineering.**  
 
 ---
 
-## **🎯 Project Approach**  
+## **🎯 Approach & Methodology**  
 
-### **🔹 Feature Engineering with Real Estate Logic**  
-Instead of just using high-correlation variables, features were **grouped logically**:  
-- **Interior:** Square footage, HVAC, bedrooms  
-- **Exterior & Land:** Lot size, frontage, porch, garage  
-- **Basement & Storage:** Finished space, bathrooms  
-- **Sales & Transactions:** Sale type, year  
+### **🔹 Feature Engineering Strategy**  
+Rather than following a traditional approach of splitting features into categorical and numerical types, we grouped them into **real estate-relevant subcategories** first, then further classified them as numerical or categorical.  
 
-This structure improved the EDA process and enhanced human interpretability—for example, combining all porch and basement related square footage. 
-
----
-
-## **📌 Why Invest in EDA?**  
-
-I chose this project as an opportunity to put **domain knowledge to work**. I learned in a previous project that **time spent on EDA—truly understanding the variables and their context to the desired outcome—is an investment that pays off significantly in the long run**.  
-
-Many data science workflows **move through EDA quickly**, focusing on cleaning and preprocessing before diving into modeling. However, a deeper exploration of the dataset not only helps with **feature selection and engineering** but also improves **interpretability, error analysis, and long-term model stability**.  
-
-The improvements seen in **linear regression and gradient boosting** suggest that structured feature engineering can enhance performance, especially for models that do not inherently detect complex interactions.  
-
----
-
-## **📊 Visualizing Key Relationships**  
-
-EDA is not just about cleaning data—it’s about understanding how features interact with the target variable. To explore these relationships, I included key visualizations:  
-
-- **Sale Price Distribution** – Reveals the skewness of the target variable, highlighting the need for transformation.  
-- **Sale Price vs. Total Rooms** – Examines whether more rooms consistently lead to higher prices or if other factors play a role.  
-- **Sale Price vs. GrLivArea (Above-Ground Living Area)** – A crucial check, as square footage is often one of the strongest predictors of home value.  
-- **Sale Price by Decade** – Investigates whether older homes follow different pricing trends, capturing potential temporal effects.  
+#### **Feature Segments:**
 
 <table>
+<tr>
+<td>
+
+- **Basement**  
+- **Bath**  
+- **Exterior**  
+
+ 
+
+</td>
+<td>
+
+- **Fireplace**  
+- **Garage**  
+- **General**  
+
+</td>
+
+<td>
+  
+- **Interior** 
+- **Kitchen** 
+- **Lot**  
+ 
+</td>
+
+<td>
+
+- **Overall**  
+- **Pool**  
+- **Porch** 
+
+</td>
+
+<td>
+
+
+- **Roof**  
+- **Sale Info**
+
+
+  
+</td>
+</tr>
+</table>
+
+
+This segmentation improved **interpretability** and **EDA efficiency**, allowing for more informed feature selection and engineering.  
+
+---
+
+## **📊 Exploratory Data Analysis (EDA)**  
+
+EDA was crucial in identifying patterns, missing values, and outliers. Visualizations included:  
+
+- **Sale Price by Decade** – Investigates long-term price trends.
+- **Sale Price vs. GrLivArea** – Analyzes how above-ground living area correlates with price.  
+- **Sale Price Distribution** – Highlights skewness in the target variable.  
+- **Sale Price vs. Total Rooms** – Explores the impact of room count.  
+
+
+- <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/1a77c594-da71-46cb-b89e-4fe876ddd06c" width="400"></td>
     <td><img src="https://github.com/user-attachments/assets/c109c5dc-5989-4e7f-b6c3-08c77cd22dab" width="400"></td>
@@ -70,11 +104,9 @@ EDA is not just about cleaning data—it’s about understanding how features in
 
 ---
 
-## **📊 Model Performance**  
+## **📈 Model Performance**  
 
-For an explanation of RMSE and R2 (R-Squared), [READ THIS.](https://github.com/autumnmarin/ML_Decoded/blob/main/README.md)
-
-Feature engineering **consistently improved RMSE across models**, with the strongest gains in **linear regression and gradient boosting models**.  
+Feature engineering consistently improved RMSE across models.  
 
 | Model | RMSE Before | RMSE After  |
 |---------------|------------|------------|
@@ -84,36 +116,24 @@ Feature engineering **consistently improved RMSE across models**, with the stron
 | **XG Boost** | 21,995 | 20,250 |
 | **CatBoost**   | 22,427 | **19,875** |
 
-- **Linear regression saw significant improvements**, confirming that structured feature engineering is especially beneficial for traditional models.  
-- **Gradient Boosting also improved**, showing that engineered features added some predictive power.  
-- **Tree-based models, including CatBoost, saw minimal gains**, reinforcing their ability to extract feature relationships without extensive manual engineering.  
+- **Linear regression saw the largest improvements**, reinforcing the value of structured feature engineering.  
+- **Gradient Boosting models benefited as well**, indicating added predictive power from engineered features.  
+- **CatBoost had the best overall RMSE**, proving its robustness even with minimal manual feature adjustments.  
 
-<table>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/03f2ef38-badd-461a-8c5d-5bfc421e35aa" width="400"></td>
-    <td><img src="https://github.com/user-attachments/assets/29b453b5-6a2d-47ae-afc3-da64e2ade0c3" width="400"></td>
-  </tr>
-</table>
 ---
 
-## **🔎 Findings**  
-1️⃣ **While feature engineering added value across models, its impact varied depending on how much the model relies on manual feature construction versus automated pattern recognition.**  
-2️⃣ **Grouping related features based on meaning and context improved interpretability and will be a new best practice in my toolkit.**  
-3️⃣ **Future work:** Model stacking, neighborhood and location based features, and exploring temporal trends.  
+## **🔎 Findings & Next Steps**  
+1️⃣ **Feature engineering provided meaningful gains, especially for traditional models.**  
+2️⃣ **Grouping features by real estate logic enhanced model interpretability.**  
+3️⃣ **Future work includes model stacking, spatial analysis, and further refinement of temporal trends.**  
 
 ### **🏆 Kaggle Score: 0.12897** (Top 20%)  
-CatBoost delivered the strongest performance, underscoring the power of boosting algorithms in real estate valuation. The **Kaggle score of 0.12897 (Top 20%)** is excellent, especially considering that **minimizing RMSE was not the primary goal**.  
-
-This project focused on comparing **feature engineering methodologies rather than hyperparameter tuning**, reinforcing that advanced models like CatBoost inherently capture complex relationships with minimal manual intervention.
+Despite minimal hyperparameter tuning, the structured approach to feature engineering yielded strong performance, particularly in tree-based models.  
 
 ---
 
 ## **🏁 Conclusion**  
-Domain-driven feature engineering is a valuable tool across all models, though its impact varies. 
+This project underscores the value of **domain-driven feature engineering** in improving predictive performance across multiple machine learning models.  
 
 ![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=autumnmarin.Ames)
-
-
-
-
 
